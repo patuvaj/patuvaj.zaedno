@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="mk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Преземи — Патувај заедно</title>
+<meta name="robots" content="noindex">
+<script>
+  // One link for posters, QR codes and messages: iPhone → App Store, Android → Google Play, else the home page.
+  // Switch "live" to true when each store has published the app (same as on index.html).
+  var IOS = { live: false, url: 'https://apps.apple.com/mk/app/id6822459895' };
+  var ANDROID = { live: false, url: 'https://play.google.com/store/apps/details?id=mk.patuvaj.app' };
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document);
+  var target = isIOS && IOS.live ? IOS.url : /Android/.test(ua) && ANDROID.live ? ANDROID.url : './';
+  location.replace(target);
+</script>
+</head>
+<body><p><a href="./">Патувај заедно</a></p></body>
+</html>
