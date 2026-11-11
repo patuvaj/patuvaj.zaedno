@@ -44,9 +44,28 @@
   /* Hero */
   .hero { background: linear-gradient(135deg, #0e7c66 0%, #0f8c72 55%, #13977d 100%); color: #fff; overflow: hidden; }
   .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding-top: 56px; padding-bottom: 56px; }
-  .hero h1 { font-size: clamp(34px, 5vw, 52px); line-height: 1.08; margin: 0 0 16px; letter-spacing: -0.5px; }
-  .hero p.lead { font-size: 19px; margin: 0 0 24px; color: rgba(255,255,255,.9); max-width: 34ch; }
-  .routes { display: inline-block; background: rgba(255,255,255,.14); border-radius: 999px; padding: 6px 14px; font-size: 15px; font-weight: 600; margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(34px, 5.6vw, 60px); line-height: 1.08; margin: 0 0 16px; letter-spacing: -0.5px; }
+  /* The headline sets the width; the routes pill and the text below take exactly the same width */
+  .intro { display: grid; width: max-content; max-width: 100%; }
+  .hero p.lead { font-size: 19px; margin: 0 0 24px; color: rgba(255,255,255,.9); width: 0; min-width: 100%;
+                 text-align: justify; hyphens: none; text-wrap: pretty; }
+  .routes { display: block; width: 0; min-width: 100%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            background: rgba(255,255,255,.14); border-radius: 999px; padding: 6px 14px; font-size: 15px; font-weight: 600; margin-bottom: 24px; }
+  .hero h1 { white-space: nowrap; }
+  /* Hero store buttons share the headline width, one half each */
+  .hero-stores { width: 0; min-width: 100%; flex-wrap: nowrap; }
+  .hero-stores .store { flex: 1 1 0; justify-content: center; padding: 8px 12px; }
+  .hero-stores .store b { white-space: nowrap; }
+  @media (max-width: 400px) {
+    .routes { font-size: 13px; padding: 6px 10px; }
+    .hero-stores { gap: 8px; }
+    .hero-stores .store { gap: 7px; padding: 8px 8px; }
+    .hero-stores .store b { font-size: 15px; }
+  }
+  @media (max-width: 640px) {
+    .hero h1 { font-size: min(46px, 11.5vw); }
+    .hero p.lead { text-align: left; }
+  }
   .stores { display: flex; flex-wrap: wrap; gap: 12px; }
   .store { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 8px 18px; border-radius: 12px;
            background: #0b0d0f; color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,.25); }
@@ -119,10 +138,12 @@
 <div class="hero">
   <div class="wrap">
     <div>
-      <div class="routes">Велес → Скопје · Куманово → Скопје · …</div>
-      <h1>Заедно до работа</h1>
-      <p class="lead">Возите секој ден по иста релација? Понудете ги празните места. Патувате? Најдете возење за неколку секунди.</p>
-      <div class="stores" data-stores></div>
+      <div class="intro">
+        <div class="routes">Велес → Скопје · Куманово → Скопје · …</div>
+        <h1>Патувај заедно</h1>
+        <p class="lead">Возите секој ден по иста релација? Понудете ги празните места. Патувате? Најдете возење за неколку секунди.</p>
+        <div class="stores hero-stores" data-stores></div>
+      </div>
       <p class="facts">Без реклами · Проверени возачи · Оценки по секое патување</p>
     </div>
     <div class="phone"><img src="img/screen-search.webp" width="540" height="960" alt="Апликацијата: листа на возења Велес → Скопје"></div>
